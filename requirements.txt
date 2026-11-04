@@ -1,0 +1,27 @@
+fastapi
+uvicorn[standard]
+pydantic
+
+pandas
+numpy
+scikit-learn==1.6.1
+joblib==1.6.0
+
+sqlalchemy
+psycopg[binary]
+
+pymupdf
+sentence-transformers
+chromadb
+langgraph
+google-genai
+
+streamlit
+requests
+httpx
+
+python-dotenv
+pytest
+
+# python.exe -m pip install 
+# python -m pip install -U google-genai

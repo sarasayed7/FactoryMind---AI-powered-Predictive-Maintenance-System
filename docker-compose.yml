@@ -1,0 +1,55 @@
+
+services:
+  db:
+    image: postgres:16
+    container_name: factorymind-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_name:-factorymind}
+      POSTGRES_USER: ${DB_username:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_username:-postgres} -d ${DB_name:-factorymind}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: .
+    container_name: factorymind-backend
+    restart: unless-stopped
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    environment:
+      DB_username: ${DB_username:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_host: db
+      DB_port: "5432"
+      DB_name: ${DB_name:-factorymind}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      GEMINI_MODEL: ${GEMINI_MODEL}
+    volumes:
+      - ./chroma_db:/app/chroma_db
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: .
+    container_name: factorymind-frontend
+    restart: unless-stopped
+    command: streamlit run frontend/dashboard.py --server.address 0.0.0.0 --server.port 8501
+    ports:
+      - "8501:8501"
+    environment:
+      FACTORYMIND_API_URL: http://backend:8000
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

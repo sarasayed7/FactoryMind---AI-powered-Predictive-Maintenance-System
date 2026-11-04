@@ -1,0 +1,37 @@
+# Environment
+.venv/
+.venv*/
+venv/
+
+__pycache__/
+*.py[cod]
+
+# Secrets
+.env
+.env.*
+
+# Keep the example configuration
+!.env.example
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Generated data
+chroma_db/
+*.log
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+PostgreSQL/
+FactoryMind.docx
