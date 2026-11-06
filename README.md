@@ -1,7 +1,7 @@
 [README.md](https://github.com/user-attachments/files/34483519/README.md)
 # FactoryMind --- AI-Powered Predictive Maintenance
 
-[![FactoryMind Dashboard Demo](https://img.youtube.com/vi/E5j8p402l0k/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+[![FactoryMind Dashboard Demo](https://img.youtube.com/vi/E5j8p402l0k/0.jpg)](https://www.youtube.com/watch?v=E5j8p402l0k)
 
 *Click the preview to watch the dashboard demonstration.*
 
