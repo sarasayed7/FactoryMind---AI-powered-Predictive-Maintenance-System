@@ -414,17 +414,21 @@ Once verified, add the exact Compose startup instructions and document
 the persistent PostgreSQL and ChromaDB volumes here. Do not assume that
 local PostgreSQL data is copied into a new container volume.
 
-# 1. Clone the repository
+### 1. Clone the repository
+```bash
 git clone <YOUR_GITHUB_REPOSITORY_URL>
 cd FactoryMind---AI-powered-Predictive-Maintenance-System
+```
 
-# 2. Create environment configuration
+### 2. Create environment configuration
 copy .env.example .env
 
-# 3. Configure the required environment variables in .env
+### 3. Configure the required environment variables in .env
 
-# 4. Build and start all services
+### 4. Build and start all services
+```bash
 docker compose up --build
+```
 
 ## Limitations and responsible use
 
